@@ -7,6 +7,11 @@ Vec2D::Vec2D(double x, double y)
     this->y = y;
 }
 
+Vec2D::Vec2D()
+{
+    Vec2D(0, 0);
+}
+
 double Vec2D::get_x() const
 {
     return x;

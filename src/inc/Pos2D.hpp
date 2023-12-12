@@ -9,9 +9,11 @@
 /**
  * @brief defines a 2D position with an X and a Y coordinate
  */
-class Pos2D: public Vec2D
+class Pos2D: private Vec2D
 {
 public:
+    Pos2D(double x, double y);
+    Pos2D();
     /**
      * @brief computes the Euclidean distance between current pos and another
      *

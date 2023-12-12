@@ -3,7 +3,7 @@
  */
 
 #include "Pos2D.hpp"
-#include "Velocity2D.hpp"
+#include "Vec2D.hpp"
 #include <vector>
 
 /**
@@ -19,8 +19,8 @@ public:
      * @param init_y initial y_axis position
      * @param rule2_dist distance parameter for rule2 computation
      */
-    Boid(Pos2D position, Vec2D velocity, double range_avoid, \
-            double range_align, double max_speed);
+    Boid(double pos_x, double pos_y, double vel_x, double vel_y, \
+            double range_align, double range_avoid, double max_speed);
 
     /**
      * @brief boids rule 1: flock towards center of mass

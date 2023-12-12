@@ -4,20 +4,14 @@
  * Tests for the Vec2D class
  */
 
-#include <random>
-
+#include "test-utility.hpp"
+#include <cmath>
 /**
  * @brief generates a random double between two bounds
  *
  * @param min lower bound
  * @param max upper bound
  */
-double generateRandomDouble(double min, double max) {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_real_distribution<> dis(min, max);
-    return dis(gen);
-}
 
 #include "../src/inc/Vec2D.hpp"
 #include "gtest/gtest.h"
@@ -84,7 +78,7 @@ TEST(Vec2D_test, multiplication_test)
 
 TEST(Vec2D_test, norm_test)
 {
-    Vec2D simple(sqrt(2), sqrt(2));
+    Vec2D simple(std::sqrt(2), std::sqrt(2));
     EXPECT_EQ(simple.norm(), 2.0);
 
     double min = -100.0;
@@ -98,9 +92,4 @@ TEST(Vec2D_test, norm_test)
     EXPECT_NEAR(a.norm()*a.norm(), norm_squared_val, 0.01);
 }
 
-int main(int argc, char** argv)
-{
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
 

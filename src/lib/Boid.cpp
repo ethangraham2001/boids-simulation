@@ -2,13 +2,10 @@
 #include "../inc/Pos2D.hpp"
 #include "../inc/Boid.hpp"
 
-Boid::Boid(Pos2D position, Vec2D velocity, double range_avoid, \
-            double range_align, double max_speed)
+
+Boid::Boid(double pos_x, double pos_y, double vel_x, double vel_y, \
+        double range_align, double range_avoid, double max_speed)
 {
-    this->position = position;
-    this->velocity = velocity;
-    this->range_avoid = range_avoid;
-    this->range_align = range_align;
-    this->max_speed = max_speed;
+    Pos2D init_pos(pos_x, pos_y);
 }
 
