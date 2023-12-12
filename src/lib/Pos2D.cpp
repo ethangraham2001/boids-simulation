@@ -19,13 +19,13 @@ Pos2D::Pos2D() : Vec2D()
     Pos2D(0, 0);
 }
 
-Vec2D Pos2D::operator-(const Pos2D& other)
+Vec2D Pos2D::operator-(const Pos2D& other) const
 {
     return Vec2D(x - other.get_x(), y - other.get_y());
 }
 
 
-double Pos2D::distance_to(const Pos2D& other)
+double Pos2D::distance_to(const Pos2D& other) const
 {
     return (*this - other).norm();
 }

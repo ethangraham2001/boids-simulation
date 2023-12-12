@@ -22,7 +22,7 @@ public:
      *
      * @returns this + other
      */
-    Vec2D operator+(const Vec2D& other);
+    Vec2D operator+(const Vec2D& other) const;
 
     /**
      * @brief defines substraction of one vector this - other
@@ -31,7 +31,7 @@ public:
      *
      * @returns this - other
      */
-    Vec2D operator-(const Vec2D& other);
+    Vec2D operator-(const Vec2D& other) const;
 
 
     /**
@@ -74,7 +74,7 @@ public:
     /**
      * @brief computes the vector norm of a Vec2D
      */
-    double norm();
+    double norm() const;
 
     /*
      * @brief to string method

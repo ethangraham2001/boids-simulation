@@ -21,8 +21,13 @@ public:
      *
      * @return dist(this, other)
      */
-    double distance_to(const Pos2D& other);
+    double distance_to(const Pos2D& other) const;
 
-    Vec2D operator-(const Pos2D& other);
+    /**
+     * @brief returns the vector difference between two points
+     *
+     * @param other another Pos2D
+     */
+    Vec2D operator-(const Pos2D& other) const;
 };
 
