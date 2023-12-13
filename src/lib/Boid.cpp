@@ -13,16 +13,17 @@ Boid::Boid(Pos2D init_pos, Vec2D init_vel, \
     this->max_speed   = max_speed;
 }
 
-double Boid::distance_to(const Boid other)
+double Boid::distance_to(const Boid& other) const
 {
+    return this->position.distance_to(other.get_position());
 }
 
-Vec2D Boid::compute_vec_rule1(const Pos2D center_of_mass)
+Vec2D Boid::compute_vec_rule1(const Pos2D& center_of_mass)
 {
     return center_of_mass - this->position;
 }
 
-Vec2D Boid::compute_vec_rule2(const std::vector<Boid> boids)
+Vec2D Boid::compute_vec_rule2(const std::vector<Boid>& boids)
 {
     Vec2D res(0, 0);
 
@@ -32,7 +33,7 @@ Vec2D Boid::compute_vec_rule2(const std::vector<Boid> boids)
     return res;
 }
 
-Vec2D Boid::compute_vec_rule3(const std::vector<Boid> boids)
+Vec2D Boid::compute_vec_rule3(const std::vector<Boid>& boids)
 {
     Vec2D res(0, 0);
 
@@ -43,12 +44,12 @@ Vec2D Boid::compute_vec_rule3(const std::vector<Boid> boids)
     return res;
 }
 
-Pos2D Boid::get_position()
+Pos2D Boid::get_position() const
 {
     return this->position;
 }
 
-Vec2D Boid::get_velocity()
+Vec2D Boid::get_velocity() const
 {
     return this->velocity;
 }

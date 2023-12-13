@@ -19,7 +19,7 @@ public:
      *
      * @param other another Pos2D
      *
-     * @return dist(this, other)
+     * @returns dist(this, other)
      */
     double distance_to(const Pos2D& other) const;
 
@@ -29,5 +29,21 @@ public:
      * @param other another Pos2D
      */
     Vec2D operator-(const Pos2D& other) const;
+
+    /**
+     * @brief += operator, used for center of mass calculation
+     *
+     * @param other the Pos2D to add
+     *
+     * @returns the updated position
+     */
+    Pos2D& operator+=(const Pos2D& other);
+
+    Pos2D operator+(const Vec2D& delta) const;
+
+    /**
+     * @brief compares two positions for equality
+     */
+    bool operator==(const Pos2D& other) const;
 };
 

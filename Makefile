@@ -1,8 +1,9 @@
 # libsfml: g++ lib/main.o -o simulation -L<sfml-install-path>/lib -lsfml-graphics -lsfml-window -lsfml-system
 #
 CXX = g++
-CXXFLAGS = -std=c++11 -Isrc/lib -pthread
+CXXFLAGS = -std=c++11 -Isrc/lib -Isrc/main -pthread
 LDFLAGS = -lgtest -lgtest_main
+SFMLFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 
 SRC_DIR = src/lib
 TEST_DIR = test
@@ -35,7 +36,7 @@ $(TEST): $(SRC_OBJ) $(TEST_OBJ)
 	$(CXX) $(CXXFLAGS) $^ $(LDFLAGS) -o $@
 
 $(PROGRAM): $(SRC_OBJ) $(MAIN_OBJ)
-	$(CXX) $(CXXFLAGS) $^ $(LDFLAGS) -o $@
+	$(CXX) $(CXXFLAGS) $^ $(SFMLFLAGS) -o $@
 
 .PHONY: test clean
 

@@ -43,3 +43,20 @@ TEST(Pos2D_test, distance_test2)
     EXPECT_EQ(a.distance_to(b), expected.norm());
 }
 
+TEST(Pos2D_test, addition_test)
+{
+    double min = -100;
+    double max =  100;
+    double a_x = generateRandomDouble(min, max);
+    double a_y = generateRandomDouble(min, max);
+    double b_x = generateRandomDouble(min, max);
+    double b_y = generateRandomDouble(min, max);
+
+    Pos2D a(a_x, a_y);
+    Pos2D b(b_x, b_y);
+    Pos2D expected(a_x + b_x, a_y + b_y);
+
+    a += b;
+    EXPECT_EQ(a, expected);
+}
+
