@@ -14,7 +14,7 @@ int main()
     std::cout << "Intializing..." << std::endl;
     Environment env(800, 600, 1e-4, 1, 1);
 
-    env.add_random_boids(70);
+    env.add_random_boids(80);
 
     sf::RenderWindow window(sf::VideoMode(env.max_x, env.max_y), 
             "Boids Simulation");
@@ -41,7 +41,7 @@ int main()
         for (auto b : boids)
         {
             // draw boids
-            sf::CircleShape c(5.f);
+            sf::CircleShape c(4.f);
             c.setFillColor(sf::Color::Black);
             Pos2D b_pos = b.get_position();
             c.setPosition(b_pos.get_x(), b_pos.get_y());
