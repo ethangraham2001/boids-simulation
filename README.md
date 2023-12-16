@@ -13,7 +13,7 @@ flock together. Based on three rules
 
 ## Demo
 
-![Demo *(with compressed colors)*](assets/demo.fig)
+![Demo *(with compressed colors)*](assets/demo.gif)
 
 ## Implementation 
 
