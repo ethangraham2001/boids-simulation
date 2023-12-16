@@ -16,10 +16,12 @@ PROGRAM = boids
 # List your source files
 SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp)
 TEST_FILES = $(wildcard $(TEST_DIR)/*.cpp)
+MAIN_FILES = $(wildcard $(MAIN_DIR)/*.cpp)
 
 # Generate object file names for source and test files
 SRC_OBJ = $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRC_FILES))
 TEST_OBJ = $(patsubst $(TEST_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(TEST_FILES))
+MAIN_OBJ = $(patsubst $(MAIN_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(MAIN_FILES))
 
 # Compile source files to object files
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
@@ -30,6 +32,12 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 $(BUILD_DIR)/%.o: $(TEST_DIR)/%.cpp
 	@mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Compile test files to object files
+$(BUILD_DIR)/%.o: $(MAIN_DIR)/%.cpp
+	@mkdir -p $(BUILD_DIR)
+	$(CXX) $(CXXFLAGS) $(SFMLFLAGS) -c $< -o $@
+
 
 # Compile and link all object files to create the test executable
 $(TEST): $(SRC_OBJ) $(TEST_OBJ)
