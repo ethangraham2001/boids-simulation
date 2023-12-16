@@ -1,4 +1,5 @@
 #include <vector>
+#include <ostream>
 #include "../inc/Boid.hpp"
 
 // default dimensions for constructor
@@ -44,6 +45,27 @@ public:
      * @param boids a vector of boids
      */
     void update_boid_positions();
+
+    /**
+     * @brief adds `num_boids` random boids to the boids vector
+     *
+     * @param num_boids the number of boids to add
+     */
+    void add_random_boids(int num_boids);
+
+    /**
+     */
+    std::vector<Boid>& get_boids();
+
+    /*
+     * @returns true if a bird if out of bounds
+     */
+    bool is_out_of_bounds(Boid& boid);
+
+    /**
+     * @brief tostring method
+     */
+    friend std::ostream& operator<<(std::ostream& os, const Environment& env); 
 
     double max_x;
     double max_y;
