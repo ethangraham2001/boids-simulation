@@ -11,6 +11,10 @@ flock together. Based on three rules
 2. Boids avoid boids that are too close 
 3. Boids align themselves with the speed of other boids near them
 
+## Demo
+
+![Demo *(with compressed colors)*](assets/demo.fig)
+
 ## Implementation 
 
 The `Boid` class in *(defined in `Boid.hpp`)* has a position `Pos2D` and 
