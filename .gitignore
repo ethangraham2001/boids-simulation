@@ -1,3 +1,5 @@
 build/
 
+boids
+test
 *.o
