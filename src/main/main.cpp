@@ -1,6 +1,7 @@
+#include <iostream>
+#include <ostream>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
-#include <iostream>
 #include <SFML/Graphics.hpp>
 #include "../inc/Environment.hpp"
 
@@ -9,12 +10,23 @@
 /**
  * MAIN function. Calls all computation and draws the boids
  */
-int main()
+int main(int argc, char* argv[])
 {
+    int num_boids;
+    if (argc < 2)
+        num_boids = 75;
+    else if (argc == 2)
+        num_boids = atoi(argv[1]);
+    else
+    {
+        std::cout << "expected ./boids <num_boids>. Returning..." << std::endl;
+        return -1;
+    }
+
     std::cout << "Intializing..." << std::endl;
     Environment env(800, 600, 1e-4, 1, 1);
 
-    env.add_random_boids(80);
+    env.add_random_boids(num_boids);
 
     sf::RenderWindow window(sf::VideoMode(env.max_x, env.max_y), 
             "Boids Simulation");
