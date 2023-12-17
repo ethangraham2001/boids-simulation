@@ -2,6 +2,10 @@
 #include <iterator>
 #include <ostream>
 #include <random>
+#include <thread>
+
+// uncomment for multihreaded implementation
+// #define MULTITHREADED
 
 Environment::Environment(double max_x, double max_y, double vec_1_factor, \
         double vec_2_factor, double vec_3_factor)
@@ -44,8 +48,38 @@ void Environment::update_boid_positions()
 {
     auto center_of_mass = compute_center_of_mass();
     // compute velocities
+
+    /* velocity computation done multithreaded */
+
+#ifdef MULTITHREADED
+    std::vector<std::thread> threads;
     for (auto& boid : this->boids)
     {
+
+        threads.emplace_back([center_of_mass, this, &boid] {
+            Vec2D vec1 = boid.compute_vec_rule1(center_of_mass);
+            Vec2D vec2 = boid.compute_vec_rule2(this->boids);
+            Vec2D vec3 = boid.compute_vec_rule3(this->boids);
+
+            vec1 *= vec_1_factor;
+            vec2 *= vec_2_factor;
+            vec3 *= vec_3_factor;
+
+            Vec2D final_vec = vec1 + vec2 + vec3;
+
+            if (final_vec.norm() > boid.get_max_velocity())
+                final_vec *= (boid.get_max_velocity() / final_vec.norm());
+
+            boid.set_velocity(final_vec);
+        });
+    }
+    for (auto& thread : threads)
+        thread.join();
+#endif
+#ifndef MULTITHREADED
+    for (auto& boid : this->boids)
+    {
+
         Vec2D vec1 = boid.compute_vec_rule1(center_of_mass);
         Vec2D vec2 = boid.compute_vec_rule2(this->boids);
         Vec2D vec3 = boid.compute_vec_rule3(this->boids);
@@ -61,6 +95,7 @@ void Environment::update_boid_positions()
 
         boid.set_velocity(final_vec);
     }
+#endif
 
     // compute new positions
     for (auto& boid : this->boids)
