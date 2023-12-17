@@ -71,6 +71,11 @@ compilation
 Compile the main executable with `make boids` from the project root. Requires 
 `libsfml` to be installed for drawing the boids
 
+```bash
+$ sudo apt-get install libsfml-dev
+```
+For ubuntu.
+
 To compile the test executable, run `make test` from the project root. Requires
 `gtest`.
 
